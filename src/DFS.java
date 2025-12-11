@@ -43,7 +43,11 @@ public class DFS {
         }
 
         // destination
-        if(row==N-1 && col==N-1) return;
+        if(row==N-1 && col==N-1) {
+            System.out.println("\nThread " + Thread.currentThread().getName() + " reached destination.");
+            printVisited();
+            return;
+        }
 
         // possible moves: down, right
         int[][] moves = {{row+1, col}, {row, col+1}};
@@ -60,9 +64,11 @@ public class DFS {
                     RatThread newThread = new RatThread(matrix, rects, r, c, nextColor);
                     activeThreads.incrementAndGet();
                     new Thread(() -> {
-                        //newThread.run();
-                        new Thread (newThread).start();
-                        activeThreads.decrementAndGet();
+                        try {
+                            newThread.run();
+                        } finally {
+                            activeThreads.decrementAndGet();
+                        }
                     }).start();
                 } else {
                     search(r,c);
@@ -82,5 +88,18 @@ public class DFS {
         int index = colorIndex.getAndIncrement() % colors.length;
         //same as (colorIndex+1) % color.length
         return colors[index];
+    }
+
+    private void printVisited(){
+        synchronized(lock){
+            System.out.println("\nMatrix Visited:");
+            for(int i=0; i<visited.length; i++){
+                for(int j=0; j<visited.length; j++){
+                    System.out.print((visited[i][j] ? "1"+" " : "0"+" "));
+                }
+                System.out.print("\n");
+            }
+            System.out.println();
+        }
     }
 }
