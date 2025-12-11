@@ -96,9 +96,3 @@ public class GUI extends Application{
         alert.showAndWait();
     }
 }
-
-
-//small input window N and 1/0
-//open new window for grid NxN
-
-//for each thread color cells it moves on
