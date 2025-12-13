@@ -1,11 +1,12 @@
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 
 public class GUI extends Application{
 
@@ -100,5 +101,4 @@ public class GUI extends Application{
 
 //small input window N and 1/0
 //open new window for grid NxN
-
 //for each thread color cells it moves on

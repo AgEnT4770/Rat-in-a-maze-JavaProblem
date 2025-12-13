@@ -19,14 +19,15 @@ public class Main {
             matrix[0][0] = 1;
             matrix[N-1][N-1] = 1;
 
+            System.out.println("Matrix Created:");
             for(int i=0; i<N; i++){
                 for(int j = 0; j<N; j++){
-                    System.out.print(matrix[i][j] + "  ");
+                    System.out.print(matrix[i][j] + " ");
                 }
                 System.out.print("\n");
             }
             GUI.showGrid(matrix);
-            int t = Runtime.getRuntime().availableProcessors();
+            //int t = Runtime.getRuntime().availableProcessors();
             Rectangle[][] rects = GUI.getRects(); //get's existing rects from gui
             RatThread rat = new RatThread(matrix, rects, 0, 0, Color.RED);
             new Thread(rat).start();
@@ -35,10 +36,3 @@ public class Main {
 
     }
 }
-
-
-//instanciate the gui
-//take N and fill matrix with 0/1 randomly
-
-//calculate max number of threads to use
-//work RatThread
